@@ -1,0 +1,15 @@
+﻿server=http://appsvm74:8080/qcbin -tag S1
+server.admin=sa
+server.admin.password=
+
+dbserver=16.186.74.217
+dbserver.admin=sa
+dbserver.admin.password=openview
+
+dbserver=apps002
+dbserver.admin=sa
+dbserver.admin.password=!qaz2wsx
+dbserver.space=ALMTABLESPACE1
+dbserver.tempspace=TEMP
+
+
