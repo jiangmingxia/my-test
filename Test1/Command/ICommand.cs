@@ -6,8 +6,9 @@ using System.Text;
 namespace Test1.Command
 {
     public interface ICommand
-    {        
-        bool execute();
+    {
+        internal static string COMMAND_NAME;
+        bool execute(Dictionary<string, string> options);
         
     }
 }
