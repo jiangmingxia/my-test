@@ -44,12 +44,7 @@ namespace Test1.Command
                 }
             }
             return true;
-        }
-
-        public static int getOptionNumber()
-        {
-            return options.Count;
-        }
+        }        
 
         internal static string Command
         {

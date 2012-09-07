@@ -27,11 +27,18 @@ namespace Test1.QC
             string[] bs = a.Split(' ');
 
             //load command
-            if (!CommandReader.load(bs)) return;            
+            if (!CommandReader.load(bs)) return;
+
+
+            //init current state
 
             //get commander
-            ICommand command = CommandFactory.getCommand(CommandReader.Command, CommandReader.Options);
-            command.execute();
+            ICommand command = CommandFactory.getCommand(CommandReader.Command);
+            Console.WriteLine(command.GetType() == typeof(SetupCommand));
+            Console.WriteLine(command.GetType() == typeof(ExecCommand));
+            Console.WriteLine(command.GetType() == typeof(ICommand));
+            
+
 
             int interval = 20;
             Thread.Sleep(interval * 1000);

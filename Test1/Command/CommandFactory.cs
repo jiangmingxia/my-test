@@ -7,16 +7,13 @@ namespace Test1.Command
 {
     class CommandFactory
     {
-        public const string SETUP_CMD = "setup";
-        public const string EXEC_CMD = "exec";
-        public const string RELEASE_CMD = "release";
 
-        public static ICommand getCommand(string command, Dictionary<string,string> options)
+        public static ICommand getCommand(string command)
         {
-            if (command.Equals(SETUP_CMD)) return new SetupCommand(options);
-            if (command.Equals(EXEC_CMD)) return new ExecCommand(options);
-            if (command.Equals(RELEASE_CMD)) return new ReleaseCommand(options);
-            Console.WriteLine("No such command: "+command);
+            if (command.Equals(SetupCommand.NAME)) return new SetupCommand();
+            if (command.Equals(ExecCommand.NAME)) return new ExecCommand();
+            if (command.Equals(ReleaseCommand.NAME)) return new ReleaseCommand();
+            if (command.Equals(UpdateCommand.NAME)) return new UpdateCommand();            
             return null;
         }
     }

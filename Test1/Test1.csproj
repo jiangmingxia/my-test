@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandEngine.cs" />
     <Compile Include="Command\CommandFactory.cs" />
     <Compile Include="Command\CommandOutput.cs" />
     <Compile Include="Command\CommandReader.cs" />
+    <Compile Include="Command\UpdateCommand.cs" />
     <Compile Include="ConfigReader.cs" />
     <Compile Include="DFunc.cs" />
     <Compile Include="DRun.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Command\ReleaseCommand.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Command\SetupCommand.cs" />
+    <Compile Include="StatusMachine.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="TestsReader.cs" />
   </ItemGroup>

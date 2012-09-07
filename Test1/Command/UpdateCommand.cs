@@ -5,11 +5,9 @@ using System.Text;
 
 namespace Test1.Command
 {
-    class ExecCommand:ICommand
+    class UpdateCommand : ICommand
     {
-        private string config;
-        private string testset;
-        internal static string NAME = "exec";
+        internal static string NAME = "update";
 
         public bool validateOptions(Dictionary<string, string> options)
         {
@@ -24,7 +22,8 @@ namespace Test1.Command
 
         public string getName()
         {
-            return ExecCommand.NAME;
+            return UpdateCommand.NAME;
         }
+
     }
 }
