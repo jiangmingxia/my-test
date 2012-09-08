@@ -60,6 +60,12 @@ namespace Test1
             }
         }
 
+        class CallAction
+        {
+            bool runCommand;
+            
+        }
+
         //status change rules
         Dictionary<StateTransition, ProcessState> transitions;
         public ProcessState CurrentState { get; private set; }
@@ -76,9 +82,9 @@ namespace Test1
             {
                 //begin only accept Setup command, other commands will not be executed
                 {new StateTransition(ProcessState.Begin,ChangeCondition.Setup),ProcessState.Setup}, 
-                {new StateTransition(ProcessState.Begin,ChangeCondition.Exec),ProcessState.Terminated},
-                {new StateTransition(ProcessState.Begin,ChangeCondition.Release),ProcessState.Terminated},
-                {new StateTransition(ProcessState.Begin,ChangeCondition.Update),ProcessState.Terminated},
+                {new StateTransition(ProcessState.Begin,ChangeCondition.Exec),ProcessState.Terminated},  //please run setup first
+                {new StateTransition(ProcessState.Begin,ChangeCondition.Release),ProcessState.Terminated}, //please run setup first
+                {new StateTransition(ProcessState.Begin,ChangeCondition.Update),ProcessState.Terminated},  //please run setup first
                 
                 //setup only accept setup result&resouce status
                 {new StateTransition(ProcessState.Setup,ChangeCondition.SetupPass),ProcessState.Ready},
@@ -88,7 +94,7 @@ namespace Test1
                 //ready:
                 {new StateTransition(ProcessState.Ready,ChangeCondition.Update),ProcessState.Running},
                 {new StateTransition(ProcessState.Ready,ChangeCondition.Exec),ProcessState.Running},
-                {new StateTransition(ProcessState.Ready,ChangeCondition.Setup),ProcessState.Ready},
+                {new StateTransition(ProcessState.Ready,ChangeCondition.Setup),ProcessState.Ready},      //already setup
                 {new StateTransition(ProcessState.Ready,ChangeCondition.Release),ProcessState.Cleanup},
 
                 //running: can also run it again no matter run pass or fail
@@ -97,13 +103,13 @@ namespace Test1
                 
                 //Dirty: only accept release command to do cleanup
                 {new StateTransition(ProcessState.Dirty,ChangeCondition.Release),ProcessState.Cleanup},
-                {new StateTransition(ProcessState.Dirty,ChangeCondition.Setup),ProcessState.Dirty},
-                {new StateTransition(ProcessState.Dirty,ChangeCondition.Exec),ProcessState.Dirty},
-                {new StateTransition(ProcessState.Dirty,ChangeCondition.Update),ProcessState.Dirty},
+                {new StateTransition(ProcessState.Dirty,ChangeCondition.Setup),ProcessState.Dirty},  //please release it first
+                {new StateTransition(ProcessState.Dirty,ChangeCondition.Exec),ProcessState.Dirty},   //formal setup failed, please release then setup again before exec this command
+                {new StateTransition(ProcessState.Dirty,ChangeCondition.Update),ProcessState.Dirty}, //formal setup failed, please release then setup again before exec this command
 
                 //Cleanup: clean up fail will cause status dirty, pass will terminate the process
                 {new StateTransition(ProcessState.Cleanup,ChangeCondition.RunPass),ProcessState.Terminated},
-                {new StateTransition(ProcessState.Dirty,ChangeCondition.RunFail),ProcessState.Dirty}
+                {new StateTransition(ProcessState.Cleanup,ChangeCondition.RunFail),ProcessState.Dirty}
             };
 
 
