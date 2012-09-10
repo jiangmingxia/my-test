@@ -34,9 +34,7 @@ namespace Test1.QC
 
             //get commander
             ICommand command = CommandFactory.getCommand(CommandReader.Command);
-            Console.WriteLine(command.GetType() == typeof(SetupCommand));
-            Console.WriteLine(command.GetType() == typeof(ExecCommand));
-            Console.WriteLine(command.GetType() == typeof(ICommand));
+            
             
 
 

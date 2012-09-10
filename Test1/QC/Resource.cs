@@ -51,6 +51,19 @@ namespace Test1.QC
             }
         }
 
+        //Todo
+        internal static Boolean isResourceCreated()
+        {
+            if (projects.Count == 0 && domains.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         internal static void finishLoad()
         {
             //SA login

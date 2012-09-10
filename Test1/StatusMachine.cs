@@ -59,19 +59,13 @@ namespace Test1
                 Condition = condition;
             }
         }
-
-        class CallAction
-        {
-            bool runCommand;
-            
-        }
-
+        
         //status change rules
         Dictionary<StateTransition, ProcessState> transitions;
-        public ProcessState CurrentState { get; private set; }
+        public ProcessState CurrentState { get; private set; }        
 
-        //if current status need run command
-        Dictionary<ProcessState, bool> StateNeedRun;
+        //current status error message
+        public Dictionary<ProcessState, string> Messages {get; private set;}
 
         #region construction
 
@@ -112,9 +106,27 @@ namespace Test1
                 {new StateTransition(ProcessState.Cleanup,ChangeCondition.RunFail),ProcessState.Dirty}
             };
 
-
+            Messages = new Dictionary<ProcessState, string>
+            {
+                {ProcessState.Begin,"Only "+SetupCommand.NAME+" command is valid."},
+                {ProcessState.Ready,"Setup is already done. Only "+UpdateCommand.NAME+", "+ExecCommand.NAME+" or "+ReleaseCommand.NAME+" commands are valid."},
+                {ProcessState.Dirty,"Only "+ReleaseCommand.NAME+" command is valid."}
+            };
         }
         #endregion construction
+
+        //if the state is running state
+        public bool isRunningState(ProcessState state)
+        {
+            if (state == ProcessState.Cleanup || state == ProcessState.Running || state == ProcessState.Setup)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
 
         public ProcessState getNext(ChangeCondition condition)
         {
@@ -135,7 +147,7 @@ namespace Test1
 
         //it will be called to map run result condition
         //only setup run result need check resource existance
-        public ChangeCondition mapToCondition(ICommand command, bool isPassed, bool hasResource)
+        public ChangeCondition mapToCondition(ICommand command, Boolean isPassed, Boolean hasResource)
         {
             if (command == null) throw new Exception ("Cannot map condition. Command is null.");
             if (isPassed == null) throw new Exception("Cannot map condition. Run result is null.");
@@ -185,10 +197,5 @@ namespace Test1
             }
 
         }
-
-        
-
-       
-
     }
 }
