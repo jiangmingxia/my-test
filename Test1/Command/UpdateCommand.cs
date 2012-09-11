@@ -11,13 +11,17 @@ namespace Test1.Command
 
         public bool validateOptions(Dictionary<string, string> options)
         {
-            return false;
+            return true;
         }
 
         public bool execute(Dictionary<string, string> options)
         {
             if (!validateOptions(options)) return false;
-            return false;
+            CommandOutput.commandSeperationOutput("Update BEGIN");
+
+
+            CommandOutput.commandSeperationOutput("Update END");
+            return true;
         }
 
         public string getName()

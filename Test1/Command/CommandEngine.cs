@@ -41,24 +41,25 @@ namespace Test1.Command
                     }
                     else
                     {
-                        condition = stateMachine.mapToCondition(cmd, runResult, null);
+                        condition = stateMachine.mapToCondition(cmd, runResult, false);
                     }
                     currentState=stateMachine.MoveNext(condition);
                     if (currentState == ProcessState.Terminated) break;
                 }
-                //Fetch a command
-                string input = Console.ReadLine();
-
-
-
-
+                
+                while (true)
+                {
+                    //Fetch a command
+                    if (!CommandReader.readCommand()) return false;
+                    cmd = CommandFactory.getCommand(CommandReader.Command);
+                    if (cmd != null) break;
+                    CommandOutput.commandErrorOutput("No such command!");
+                }                
+                
+                condition = stateMachine.mapToCondition(cmd);
+                currentState = stateMachine.MoveNext(condition);
             }
-
-            //status = status.moveto(string cmd)
-            //while status != exit
-            //if status is 2run, run this command
-            //after run is done, status=status.moveto(cmd(""),runresult,resource status)
-            return false;
+            return true;
         }
     }
 }

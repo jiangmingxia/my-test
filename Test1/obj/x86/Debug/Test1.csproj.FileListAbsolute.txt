@@ -9,3 +9,10 @@ D:\HP\ClassLibrary1\Test1\obj\x86\Debug\Test1.csproj.ResolveComReference.cache
 D:\HP\ClassLibrary1\Test1\obj\x86\Debug\Test1.exe
 D:\HP\ClassLibrary1\Test1\obj\x86\Debug\Test1.pdb
 D:\HP\ClassLibrary1\Test1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\jiamingx\Projects\dnet\test\Test1\obj\x86\Debug\Interop.SACLIENTLib.dll
+C:\Users\jiamingx\Projects\dnet\test\Test1\obj\x86\Debug\Test1.csproj.ResolveComReference.cache
+C:\Users\jiamingx\Projects\dnet\test\Test1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\jiamingx\Projects\dnet\test\Test1\bin\Debug\Test1.exe
+C:\Users\jiamingx\Projects\dnet\test\Test1\bin\Debug\Test1.pdb
+C:\Users\jiamingx\Projects\dnet\test\Test1\obj\x86\Debug\Test1.exe
+C:\Users\jiamingx\Projects\dnet\test\Test1\obj\x86\Debug\Test1.pdb

@@ -58,6 +58,17 @@ namespace Test1
                 CurrentState = currentState;
                 Condition = condition;
             }
+
+            public override int GetHashCode()
+            {
+                return 17 + 31 * CurrentState.GetHashCode() + 31 * Condition.GetHashCode();
+            }
+
+            public override bool Equals(object obj)
+            {
+                StateTransition other = obj as StateTransition;
+                return other != null && this.CurrentState == other.CurrentState && this.Condition == other.Condition;
+            }
         }
         
         //status change rules
@@ -147,14 +158,12 @@ namespace Test1
 
         //it will be called to map run result condition
         //only setup run result need check resource existance
-        public ChangeCondition mapToCondition(ICommand command, Boolean isPassed, Boolean hasResource)
+        public ChangeCondition mapToCondition(ICommand command, bool isPassed, bool hasResource)
         {
-            if (command == null) throw new Exception ("Cannot map condition. Command is null.");
-            if (isPassed == null) throw new Exception("Cannot map condition. Run result is null.");
+            if (command == null) throw new Exception ("Cannot map condition. Command is null.");            
             //setup condition
             if (command.GetType() == typeof(SetupCommand))
-            {
-                if (hasResource == null) throw new Exception("Cannot map condition. Resource existance is null.");
+            {                
                 if (isPassed == true) return ChangeCondition.SetupPass;
                 if (hasResource == true) return ChangeCondition.SetupFailWithResource;
                 return ChangeCondition.SetupFailWithoutResource;

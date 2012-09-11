@@ -17,13 +17,12 @@ namespace Test1.Command
             if (!validateOptions(options)) return false;
             string config = options[CONFIG_OPTION];
             string testset = options[TESTSET_OPTION];
-
-            //set isSetupCalled = true when any resource is created.
+                        
             CommandOutput.commandSeperationOutput("SETUP BEGIN");
 
 
             CommandOutput.commandSeperationOutput("SETUP END");
-            return false;
+            return true;
         }
 
         //validate given options

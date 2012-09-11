@@ -28,14 +28,7 @@ namespace Test1.QC
 
             //load command
             if (!CommandReader.load(bs)) return;
-
-
-            //init current state
-
-            //get commander
-            ICommand command = CommandFactory.getCommand(CommandReader.Command);
-            
-            
+            CommandEngine.run(CommandReader.Command,CommandReader.Options);            
 
 
             int interval = 20;

@@ -76,6 +76,7 @@ namespace Test1
             {
                 string msg = "Specified file not found: " + path;
                 DFunc.log(msg);
+                DFunc.log(e.Message);
                 Console.WriteLine(msg);
                 return null;
             }

@@ -12,6 +12,7 @@ namespace Test1.Command
 
         public static bool load(string[] args)
         {
+            command = null;  
             options = new Dictionary<string, string>();
             if (args.Length < 1)
             {
@@ -44,7 +45,25 @@ namespace Test1.Command
                 }
             }
             return true;
-        }        
+        }    
+    
+        //read a command from console and load the command
+        public static bool readCommand()
+        {
+            command = null;
+            options = new Dictionary<string, string>();
+            string line = Console.ReadLine();
+            if (line != null)
+            {
+                return load(line.Trim().Split(' '));
+            }
+            else 
+            {
+                CommandOutput.commandErrorOutput("Fail to read command.");
+                return false;
+            }
+            
+        }
 
         internal static string Command
         {
