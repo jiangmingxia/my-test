@@ -1,1 +1,1 @@
-﻿DTest{1,2}
+﻿QCTest.SampleTest{1,2}

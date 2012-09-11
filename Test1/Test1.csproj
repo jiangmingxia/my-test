@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Test1.QC.SampleTest</StartupObject>
+    <StartupObject>Test1.QC.SampleMain</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,7 +51,7 @@
     <Compile Include="Command\CommandOutput.cs" />
     <Compile Include="Command\CommandReader.cs" />
     <Compile Include="Command\UpdateCommand.cs" />
-    <Compile Include="ConfigReader.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="DFunc.cs" />
     <Compile Include="DRun.cs" />
     <Compile Include="DTest.cs" />
@@ -62,12 +62,13 @@
     <Compile Include="QC\QCDataserver.cs" />
     <Compile Include="QC\QCServer.cs" />
     <Compile Include="QC\Resource.cs" />
-    <Compile Include="QC\SampleTest.cs" />
+    <Compile Include="QC\SampleMain.cs" />
     <Compile Include="Command\ReleaseCommand.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Command\SetupCommand.cs" />
     <Compile Include="StatusMachine.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Testset.cs" />
     <Compile Include="TestsReader.cs" />
   </ItemGroup>
   <ItemGroup>

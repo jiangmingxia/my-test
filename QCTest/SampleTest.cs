@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Test1.QC;
+using Test1;
 
-namespace Test1
+namespace QCTest
 {
-    class DTest
+    public class SampleTest
     {
-
-        //
         public static void prepare()
         {
 
@@ -23,8 +22,8 @@ namespace Test1
         {
             a1 = 5;
             a2 = 6;
-            int a = a1+a2;
-            DFunc.log("The result is "+a);
+            int a = a1 + a2;
+            DFunc.log("The result is " + a);
             DFunc.returnPASS();
         }
 
@@ -45,7 +44,5 @@ namespace Test1
         {
             DFunc.log("Undo");
         }
-
-
     }
 }

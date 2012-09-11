@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Threading;
 using System.Text.RegularExpressions;
+using Test1.Command;
 
 namespace Test1
 {
@@ -62,11 +63,17 @@ namespace Test1
 
         static void Main(string[] args)
         {
-            DFunc.Dir = System.Environment.CurrentDirectory;
-           
+            
+
+            string a = "setup -testset testset.txt -config config.txt";
+            string[] bs = a.Split(' ');
 
             int i;
-            //TODO:
+            //TODO:DFunc.Dir = System.Environment.CurrentDirectory;
+           
+            //load command
+            if (!CommandReader.load(bs)) return;
+            CommandEngine.run(CommandReader.Command, CommandReader.Options);       
             String testsetPath = "Testset.txt";
             Test[] tests = TestsReader.getTests(testsetPath);
 

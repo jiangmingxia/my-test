@@ -6,9 +6,9 @@ using System.IO;
 
 namespace Test1
 {
-    class ConfigReader
+    class Config
     {
-        private static Dictionary<string, List<Dictionary<string ,string>>> configs;
+        private Dictionary<string, List<Dictionary<string ,string>>> configurations;
         private const string QC_SERVER="qc_server";
         private const string DB_SERVER="db_server";
         private const string DETAILS = "details";
@@ -27,10 +27,15 @@ namespace Test1
 
         //the string is used in config file as tag
         private const string TAG = " -tag ";
-       
-        private static void load(string config_file)
+
+        public Dictionary<string, List<Dictionary<string, string>>> Configurations
         {
-            configs = new Dictionary<string, List<Dictionary<string, string>>>();
+            get { return configurations; }
+        }
+       
+        private void load(string config_file)
+        {
+            configurations = new Dictionary<string, List<Dictionary<string, string>>>();
             List<Dictionary<string, string>> servers = new List<Dictionary<string, string>>();
             List<Dictionary<string, string>> dbServers = new List<Dictionary<string, string>>();
             try
@@ -150,8 +155,8 @@ namespace Test1
                         }
                     }
                 }
-                configs.Add(QC_SERVER, servers);
-                configs.Add(DB_SERVER, dbServers);                
+                configurations.Add(QC_SERVER, servers);
+                configurations.Add(DB_SERVER, dbServers);                
             }
             catch (Exception e)
             {
@@ -164,7 +169,7 @@ namespace Test1
         }
 
         //Read running details from config file
-        private static void readDetails(string config_file)
+        private void readDetails(string config_file)
         {   
             //only one element in this list
             List<Dictionary<string, string>> details_l = new List<Dictionary<string, string>>();
@@ -194,7 +199,7 @@ namespace Test1
                     }
                 }
                 details_l.Add(details);
-                configs.Add(DETAILS,details_l);
+                configurations.Add(DETAILS,details_l);
             }
             catch (Exception e)
             {
@@ -204,16 +209,5 @@ namespace Test1
             }
             
         }
-        
-        
-        private static Dictionary<string, List<Dictionary<string, string>>> get_config()
-        {
-            if (configs == null)
-            {
-                //load();
-            }
-            return configs;
-        }
-        
     }
 }

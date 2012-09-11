@@ -8,12 +8,12 @@ using Test1.Command;
 
 namespace Test1.QC
 {
-    class SampleTest
+    class SampleMain
     {
         
         
 
-        private static void prepare()
+        public static void prepare()
         {
 
             Project p = Resource.createProject();

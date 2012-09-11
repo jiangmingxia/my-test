@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Test1
 {
-    class DFunc
+    public class DFunc
     {
         private static string dir;
         private const string JOURNAL = "journal.txt";
